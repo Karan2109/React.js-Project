@@ -25,11 +25,11 @@ function App() {
   return !loading ? (
     <div className='bg-orange-400'>
       <div className=''>
-        <Header />Header
+        <Header />
         <main>
         TODO:  <Outlet />
         </main>
-        <Footer />Footer
+        <Footer />
       </div>
     </div>
   ) : null
