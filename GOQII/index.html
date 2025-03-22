@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multi-Tab Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h2>Multi-Tab Form</h2>
+
+    <!-- Navigation for Tabs -->
+    <div class="tab-buttons">
+      <button onclick="showTab(0)">Profile</button>
+      <button onclick="showTab(1)">Interests</button>
+      <button onclick="showTab(2)">Settings</button>
+    </div>
+
+    <!-- Profile Tab -->
+    <div class="tab active" id="profileTab">
+      <h3>Profile</h3>
+      <label>Name: <input type="text" id="name" /></label>
+      <p class="error" id="nameError"></p>
+      <label>Age: <input type="number" id="age" /></label>
+      <p class="error" id="ageError"></p>
+      <label>Email: <input type="email" id="email" /></label>
+      <p class="error" id="emailError"></p>
+      <button onclick="validateProfile()">Next</button>
+    </div>
+
+    <!-- Interests Tab -->
+    <div class="tab" id="interestsTab">
+      <h3>Interests</h3>
+      <label
+        ><input type="checkbox" class="interest" value="Sports" /> Sports</label
+      >
+      <label
+        ><input type="checkbox" class="interest" value="Music" /> Music</label
+      >
+      <label
+        ><input type="checkbox" class="interest" value="Technology" />
+        Technology</label
+      >
+      <p class="error" id="interestsError"></p>
+      <button onclick="validateInterests()">Next</button>
+    </div>
+
+    <!-- Settings Tab -->
+    <div class="tab" id="settingsTab">
+      <h3>Settings</h3>
+      <label
+        ><input type="checkbox" id="notifications" /> Enable
+        Notifications</label
+      >
+      <button onclick="submitForm()">Submit</button>
+    </div>
+
+    <!-- Summary Tab -->
+    <div id="summary" class="tab">
+      <h3>Summary</h3>
+      <table border="1">
+        <tr>
+          <th>Name</th>
+          <td id="summaryName"></td>
+        </tr>
+        <tr>
+          <th>Age</th>
+          <td id="summaryAge"></td>
+        </tr>
+        <tr>
+          <th>Email</th>
+          <td id="summaryEmail"></td>
+        </tr>
+        <tr>
+          <th>Interests</th>
+          <td id="summaryInterests"></td>
+        </tr>
+        <tr>
+          <th>Notifications</th>
+          <td id="summaryNotifications"></td>
+        </tr>
+      </table>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
