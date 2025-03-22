@@ -1,12 +1,12 @@
-import React from "react";
-import styles from "./Navigation.module.css"
+import styles from "./Navigation.module.css";
 
-function Navigation() {
+const Navigation = () => {
   return (
-    <nav className={`${styles.Navigation} container`}>
+    <nav className={`${styles.navigation} container`}>
       <div className="logo">
-        <img src="/Images/Frame 2 1.png" alt="logo" />
+        <img src="/Images/logo1.png" alt="do some coding logo" />
       </div>
+
       <ul>
         <li>Home</li>
         <li>About</li>
@@ -14,6 +14,6 @@ function Navigation() {
       </ul>
     </nav>
   );
-}
+};
 
 export default Navigation;

@@ -1,12 +1,14 @@
-import React from 'react'
-import { MdMessage } from "react-icons/md";
-
-function Button() {
+import styles from "./Button.module.css";
+const Button = ({ isOutline, icon, text, ...rest }) => {
   return (
-    <div>
-      <MdMessage />
-    </div>
-  )
-}
+    <button
+      {...rest}
+      className={isOutline ? styles.outline_btn : styles.primary_btn}
+    >
+      {icon}
+      {text}
+    </button>
+  );
+};
 
-export default Button
+export default Button;
