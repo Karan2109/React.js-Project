@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
 
-function Logo({width = "100px"}) {
+function Logo({ width = "100px" }) {
   return (
     <div style={{ width }}>
-      Logo
+      <img
+        className="rounded-3xl"
+        src="/public/pexels-pixabay-262508.jpg"
+        alt=""
+      />
     </div>
-  )
+  );
 }
 
-export default Logo
+export default Logo;
