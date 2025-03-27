@@ -137,3 +137,5 @@ export default function PostForm({ post }) {
     </form>
   );
 }
+
+export default PostForm;
