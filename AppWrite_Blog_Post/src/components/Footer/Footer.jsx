@@ -120,7 +120,7 @@ function Footer() {
                     className=" text-base font-medium text-gray-900 hover:text-gray-700"
                     to="/"
                   >
-                    Privacy policy
+                    Privacy Policy
                   </Link>
                 </li>
                 <li>
