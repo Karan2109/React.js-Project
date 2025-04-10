@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import emailjs from "emailjs-com";
+import { motion } from "motion/react";
 
 const Footer = () => {
   const form = useRef();
@@ -30,15 +31,26 @@ const Footer = () => {
     <footer className="bg-transparent text-white py-10 px-4 md:px-20">
       <div className="grid md:grid-cols-2 gap-8">
         {/* Contact Info */}
-        <div>
+        <motion.div
+          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: -100 }}
+          transition={{ duration: 0.5 }}
+        >
           <h2 className="text-2xl font-semibold mb-4">Let's Connect</h2>
           <p className="text-neutral-400 mb-2">Mumbai, India</p>
           <p className="text-neutral-400 mb-2">Email: karans21.dev@gmail.com</p>
           <p className="text-neutral-400">Phone: +91-7302518007</p>
-        </div>
+        </motion.div>
 
         {/* Contact Form */}
-        <form ref={form} onSubmit={sendEmail} className="space-y-4">
+        <motion.form
+          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, x: 100 }}
+          transition={{ duration: 0.5 }}
+          ref={form}
+          onSubmit={sendEmail}
+          className="space-y-4"
+        >
           <input
             type="text"
             name="user_name"
@@ -66,7 +78,7 @@ const Footer = () => {
           >
             Send Message
           </button>
-        </form>
+        </motion.form>
       </div>
 
       <p className="text-center text-sm text-neutral-500 mt-10">
