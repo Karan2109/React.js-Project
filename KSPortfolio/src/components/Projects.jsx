@@ -1,10 +1,18 @@
 import React from "react";
-import { PROJECTS } from "../index"; // Assumes you have your project data in a separate constants file
+import { PROJECTS } from "../index";
+import { motion } from "motion/react";
 
 const Projects = () => {
   return (
     <section className="border-b border-neutral-900 pb-12 px-4 md:px-12">
-      <h2 className="text-4xl my-20 text-center">Projects</h2>
+      <motion.h1
+        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: -100 }}
+        transition={{ duration: 0.5 }}
+        className="text-4xl my-20 text-center"
+      >
+        Projects
+      </motion.h1>
 
       {PROJECTS.map((project, index) => (
         <div
@@ -12,16 +20,26 @@ const Projects = () => {
           className="flex flex-col md:flex-row mb-16 gap-6 md:gap-10"
         >
           {/* Image: 30% on medium+ screens */}
-          <div className="md:w-[30%] w-full">
+          <motion.div
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: -100 }}
+            transition={{ duration: 0.5 }}
+            className="md:w-[30%] w-full"
+          >
             <img
               src={project.image}
               alt={project.title}
               className="w-full h-auto object-cover rounded-lg shadow-md"
             />
-          </div>
+          </motion.div>
 
           {/* Project Details: 70% on medium+ screens */}
-          <div className="md:w-[70%] w-full">
+          <motion.div
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 100 }}
+            transition={{ duration: 0.5 }}
+            className="md:w-[70%] w-full"
+          >
             <h3 className="text-xl font-semibold">{project.title}</h3>
             <p className="text-neutral-300 mt-2">{project.description}</p>
 
@@ -57,7 +75,7 @@ const Projects = () => {
                 Source Code
               </a>
             </div>
-          </div>
+          </motion.div>
         </div>
       ))}
     </section>
