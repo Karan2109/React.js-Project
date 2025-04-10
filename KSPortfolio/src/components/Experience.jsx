@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "motion/react";
 
 const Experience = () => {
   return (
@@ -106,15 +107,34 @@ const Experience = () => {
     //   </div>
     // </section>
     <section className="border-b border-neutral-900 pb-4">
-      <h2 className="text-4xl my-20 text-center">Experience</h2>
+      <motion.h1
+        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: -100 }}
+        transition={{ duration: 0.5 }}
+        className="text-4xl my-20 text-center"
+      >
+        Experience
+      </motion.h1>
 
       <div className="space-y-16">
         {/* Unified Mentor */}
         <div className="flex flex-col md:flex-row md:items-start gap-6">
           <div className="md:w-1/4">
-            <p className="text-sm text-neutral-400">2025 - 2025</p>
+            <motion.p
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -100 }}
+              transition={{ duration: 1 }}
+              className="text-sm text-neutral-400"
+            >
+              2025 - 2025
+            </motion.p>
           </div>
-          <div className="md:w-3/4">
+          <motion.div
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 100 }}
+            transition={{ duration: 1 }}
+            className="md:w-3/4"
+          >
             <h3 className="text-xl font-semibold">
               Full Stack Web Developer -{" "}
               <span className="text-neutral-400">Unified Mentor</span>
@@ -144,15 +164,27 @@ const Experience = () => {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* HNR Tech */}
         <div className="flex flex-col md:flex-row md:items-start gap-6">
           <div className="md:w-1/4">
-            <p className="text-sm text-neutral-400">2022 - 2024</p>
+            <motion.p
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -100 }}
+              transition={{ duration: 1 }}
+              className="text-sm text-neutral-400"
+            >
+              2022 - 2024
+            </motion.p>
           </div>
-          <div className="md:w-3/4">
+          <motion.div
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 100 }}
+            transition={{ duration: 1 }}
+            className="md:w-3/4"
+          >
             <h3 className="text-xl font-semibold">
               Data Quality Analyst -{" "}
               <span className="text-neutral-400">HNR Tech</span>
@@ -180,15 +212,27 @@ const Experience = () => {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Canvazo */}
         <div className="flex flex-col md:flex-row md:items-start gap-6">
           <div className="md:w-1/4">
-            <p className="text-sm text-neutral-400">2020 - 2021</p>
+            <motion.p
+              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: -100 }}
+              transition={{ duration: 1 }}
+              className="text-sm text-neutral-400"
+            >
+              2020 - 2021
+            </motion.p>
           </div>
-          <div className="md:w-3/4">
+          <motion.div
+            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, x: 100 }}
+            transition={{ duration: 1 }}
+            className="md:w-3/4"
+          >
             <h3 className="text-xl font-semibold">
               Web Developer - <span className="text-neutral-400">Canvazo</span>
             </h3>
@@ -208,7 +252,7 @@ const Experience = () => {
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
