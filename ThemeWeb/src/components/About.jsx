@@ -4,35 +4,50 @@ import aboutImage from "../assets/pic (1).png";
 import StatsCard from "./StatsCard";
 import Bitmap2 from "../assets/Bitmap (2).png";
 import play from "../assets/play.png";
+import logos from "../assets/logos.png";
 
 const About = () => {
   return (
     <section className="bg-[#FDF0E9]">
-      <div className="max-w-7xl mx-auto px-4 py-12 border-b border-[#F3D1BF]">
-        <img src={logo1} alt="Logo1" className="mx-auto text-center" />
+      {/* Responsive Logo1 (md and above) */}
+      <div className="max-w-7xl mx-auto px-4 py-12 border-b border-[#F3D1BF] hidden md:block">
+        <img src={logo1} alt="Logo1" className="mx-auto" />
       </div>
 
-      <div className="flex flex-row justify-between items-center max-w-7xl mx-auto px-4 py-12 gap-35 mt-12">
-        <div className="w-1/2">
-          <img src={aboutImage} alt="Logo1" className="mx-auto text-center" />
+      {/* Responsive Logos (only on small screens) */}
+      <div className="max-w-7xl mx-auto px-4 py-12 border-b border-[#F3D1BF] block md:hidden">
+        <img src={logos} alt="Logos" className="mx-auto" />
+      </div>
+
+      {/* Responsive About Section */}
+      <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-4 py-12 gap-10 mt-12">
+        {/* Image full-width on small screens */}
+        <div className="w-full md:w-1/2 mb-8 md:mb-0">
+          <img
+            src={aboutImage}
+            alt="About"
+            className="w-full h-auto object-cover"
+          />
         </div>
-        <div className="w-1/2 flex flex-col">
+
+        {/* Text Content */}
+        <div className="w-full md:w-1/2 flex flex-col">
           <h2 className="text-lg text-[#EF6D58] uppercase font-normal mb-6 tracking-[2px]">
             About
           </h2>
-          <h1 className="text-6xl text-[#391400] font-extrabold mb-8">
+          <h1 className="text-4xl md:text-6xl text-[#391400] font-extrabold mb-8">
             An Experience
             <br /> Design Agency
           </h1>
           <h3 className="text-lg text-[#391400] font-semibold mb-8">
             Provides a full service Range
           </h3>
-          <p className="text-base  text-[#9b694e]  mb-5">
+          <p className="text-base text-[#9b694e] mb-5">
             Ability to put themselves in the merchant's shoes.
-            <br /> It is meant to partner on the long rin, and work as an
+            <br /> It is meant to partner on the long run, and work as an
             extension of the merchant's team.
           </p>
-          <button className="bg-white text-[#391400] font-extrabold uppercase px-4 py-3 w-1/4 shadow-md rounded mb-12">
+          <button className="bg-white text-[#391400] font-extrabold uppercase px-4 py-3 w-fit shadow-md rounded mb-12">
             About us
           </button>
         </div>
