@@ -40,7 +40,7 @@ const Portfolio = () => {
       <ImageCardGrid />
 
       <div className="max-w-7xl mx-auto px-4 py-12 flex flex-col items-center justify-center">
-        <button className=" text-white bg-transparent font-bold uppercase px-4 py-3 w-1/7 border border-purple-300 mb-16">
+        <button className="text-white bg-transparent font-bold uppercase px-4 py-3 w-1/3 sm:w-1/3 md:w-1/7 border border-purple-300 mb-16 text-center">
           Explore More
         </button>
       </div>
