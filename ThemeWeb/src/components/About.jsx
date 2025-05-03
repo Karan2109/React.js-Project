@@ -20,7 +20,7 @@ const About = () => {
       </div>
 
       {/* Responsive About Section */}
-      <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-4 py-12 gap-10 mt-12">
+      <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl mx-auto px-4 py-12 gap-28 mt-12">
         {/* Image full-width on small screens */}
         <div className="w-full md:w-1/2 mb-8 md:mb-0">
           <img
