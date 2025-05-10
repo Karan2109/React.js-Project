@@ -5,6 +5,7 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/db");
 const userRoutes = require("./routes/userRoutes");
+const productRoutes = require("./routes/productRoutes");
 
 const app = express();
 app.use(express.json());
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 
 // API Routes
 app.use("/api/users", userRoutes);
+app.use("/api/products", productRoutes);
 
 // POSTMAN invite link
 // https://app.getpostman.com/join-team?invite_code=abc759033362ee7f4e0bcb2bd4fdc1856eee6326990637834252e20a870adf31
