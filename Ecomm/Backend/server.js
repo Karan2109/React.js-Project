@@ -13,6 +13,7 @@ const uploadRoutes = require("./routes/uploadRoutes");
 const subscribeRoutes = require("./routes/subscriberRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const productAdminRoutes = require("./routes/productAdminRoutes");
+const adminOrderRoutes = require("./routes/adminOrderRoutes");
 
 const app = express();
 app.use(express.json());
@@ -39,6 +40,7 @@ app.use("/api", subscribeRoutes);
 // Admin Routes
 app.use("/api/admin/users", adminRoutes);
 app.use("/api/admin/products", productAdminRoutes);
+app.use("/api/admin/orders", adminOrderRoutes);
 
 // POSTMAN invite link
 // https://app.getpostman.com/join-team?invite_code=abc759033362ee7f4e0bcb2bd4fdc1856eee6326990637834252e20a870adf31
