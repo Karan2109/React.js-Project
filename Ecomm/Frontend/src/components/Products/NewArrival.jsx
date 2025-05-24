@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import { FaChevronRight } from "react-icons/fa";
@@ -11,97 +12,113 @@ const NewArrival = () => {
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
 
-  const newArrivals = [
-    {
-      _id: "1",
-      name: "Stylish Jacket",
-      price: 120,
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=1",
-          alText: "Jacket",
-        },
-      ],
-    },
-    {
-      _id: "2",
-      name: "Stylish Jacket",
-      price: 120,
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=2",
-          alText: "Jacket",
-        },
-      ],
-    },
-    {
-      _id: "3",
-      name: "Stylish Jacket",
-      price: 120,
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=3",
-          alText: "Jacket",
-        },
-      ],
-    },
-    {
-      _id: "4",
-      name: "Stylish Jacket",
-      price: 120,
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=4",
-          alText: "Jacket",
-        },
-      ],
-    },
-    {
-      _id: "5",
-      name: "Stylish Jacket",
-      price: 120,
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=5",
-          alText: "Jacket",
-        },
-      ],
-    },
-    {
-      _id: "6",
-      name: "Stylish Jacket",
-      price: 120,
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=6",
-          alText: "Jacket",
-        },
-      ],
-    },
-    {
-      _id: "7",
-      name: "Stylish Jacket",
-      price: 120,
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=7",
-          alText: "Jacket",
-        },
-      ],
-    },
-    {
-      _id: "8",
-      name: "Stylish Jacket",
-      price: 120,
-      images: [
-        {
-          url: "https://picsum.photos/500/500?random=8",
-          alText: "Jacket",
-        },
-      ],
-    },
-  ];
+  // const newArrivals = [
+  //   {
+  //     _id: "1",
+  //     name: "Stylish Jacket",
+  //     price: 120,
+  //     images: [
+  //       {
+  //         url: "https://picsum.photos/500/500?random=1",
+  //         alText: "Jacket",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     _id: "2",
+  //     name: "Stylish Jacket",
+  //     price: 120,
+  //     images: [
+  //       {
+  //         url: "https://picsum.photos/500/500?random=2",
+  //         alText: "Jacket",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     _id: "3",
+  //     name: "Stylish Jacket",
+  //     price: 120,
+  //     images: [
+  //       {
+  //         url: "https://picsum.photos/500/500?random=3",
+  //         alText: "Jacket",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     _id: "4",
+  //     name: "Stylish Jacket",
+  //     price: 120,
+  //     images: [
+  //       {
+  //         url: "https://picsum.photos/500/500?random=4",
+  //         alText: "Jacket",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     _id: "5",
+  //     name: "Stylish Jacket",
+  //     price: 120,
+  //     images: [
+  //       {
+  //         url: "https://picsum.photos/500/500?random=5",
+  //         alText: "Jacket",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     _id: "6",
+  //     name: "Stylish Jacket",
+  //     price: 120,
+  //     images: [
+  //       {
+  //         url: "https://picsum.photos/500/500?random=6",
+  //         alText: "Jacket",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     _id: "7",
+  //     name: "Stylish Jacket",
+  //     price: 120,
+  //     images: [
+  //       {
+  //         url: "https://picsum.photos/500/500?random=7",
+  //         alText: "Jacket",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     _id: "8",
+  //     name: "Stylish Jacket",
+  //     price: 120,
+  //     images: [
+  //       {
+  //         url: "https://picsum.photos/500/500?random=8",
+  //         alText: "Jacket",
+  //       },
+  //     ],
+  //   },
+  // ];
 
+  const [newArrivals, setNewArrivals] = useState([]);
+
+  useEffect(() => {
+    const fetchNewArrivals = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/api/products/new-arrivals`
+        );
+        setNewArrivals(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchNewArrivals();
+  }, []);
   const handleMouseDown = (e) => {
     setIsDragging(true);
     // setStartX(e.clientX);
@@ -159,7 +176,7 @@ const NewArrival = () => {
 
       return () => container.removeEventListener("scroll", updateScrollButtons);
     }
-  }, []);
+  }, [newArrivals]);
 
   return (
     <section className="py-16 px-4 lg:px-0">
