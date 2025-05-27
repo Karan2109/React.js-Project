@@ -23,6 +23,8 @@ const checkoutItemSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    size: String,
+    color: String,
   },
   { _id: false }
 );
