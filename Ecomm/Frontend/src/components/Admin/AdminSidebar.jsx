@@ -5,10 +5,16 @@ import { FaBoxOpen } from "react-icons/fa";
 import { FaClipboardList } from "react-icons/fa";
 import { FaStore } from "react-icons/fa";
 import { FaSignOutAlt } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/slices/authslice";
+import { clearCart } from "../../redux/slices/cartSlice";
 
 const AdminSidebar = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleLogout = () => {
+    dispatch(logout());
+    dispatch(clearCart());
     navigate("/");
   };
   return (
