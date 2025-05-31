@@ -1,43 +1,55 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { fetchOrderDetails } from "../redux/slices/orderSlice";
+import { useSelector } from "react-redux";
 
 const OrderDetailsPage = () => {
   const { id } = useParams();
-  const [orderDetails, setOrderDetails] = useState(null);
+  // const [orderDetails, setOrderDetails] = useState(null);
+  // useEffect(() => {
+  //   const mockOrderDetails = {
+  //     _id: 12345,
+  //     createdAt: new Date(),
+  //     isPaid: true,
+  //     isDelivered: false,
+  //     paymentMethod: "PayPal",
+  //     shippingMethod: "Standard Shipping",
+  //     shippingAddress: {
+  //       city: "New York",
+  //       country: "USA",
+  //     },
+  //     orderItems: [
+  //       {
+  //         productId: "1",
+  //         name: "Jacket",
+  //         price: 100,
+  //         quantity: 1,
+  //         image: "https://picsum.photos/150?random=25",
+  //       },
+  //       {
+  //         productId: "2",
+  //         name: "Jacket",
+  //         price: 150,
+  //         quantity: 2,
+  //         image: "https://picsum.photos/150?random=26",
+  //       },
+  //     ],
+  //   };
+
+  //   setOrderDetails(mockOrderDetails);
+  // }, [id]);
+
+  const dispatch = useDispatch();
+  const { orderDetails, loading, error } = useSelector((state) => state.orders);
 
   useEffect(() => {
-    const mockOrderDetails = {
-      _id: 12345,
-      createdAt: new Date(),
-      isPaid: true,
-      isDelivered: false,
-      paymentMethod: "PayPal",
-      shippingMethod: "Standard Shipping",
-      shippingAddress: {
-        city: "New York",
-        country: "USA",
-      },
-      orderItems: [
-        {
-          productId: "1",
-          name: "Jacket",
-          price: 100,
-          quantity: 1,
-          image: "https://picsum.photos/150?random=25",
-        },
-        {
-          productId: "2",
-          name: "Jacket",
-          price: 150,
-          quantity: 2,
-          image: "https://picsum.photos/150?random=26",
-        },
-      ],
-    };
+    dispatch(fetchOrderDetails(id));
+  }, [dispatch, id]);
 
-    setOrderDetails(mockOrderDetails);
-  }, [id]);
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
 
   return (
     <div className="max-w-7xl mx-auto p-4 sm:p-6">
@@ -122,7 +134,7 @@ const OrderDetailsPage = () => {
                       </Link>
                     </td>
                     <td className="py-2 px-4">${item.price.toFixed(2)}</td>
-                    <td className="py-2 px-4">${item.quantity}</td>
+                    <td className="py-2 px-4">{item.quantity}</td>
                     <td className="py-2 px-4">${item.price * item.quantity}</td>
                   </tr>
                 ))}
