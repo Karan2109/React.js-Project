@@ -1,36 +1,53 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { clearCart } from "../redux/slices/cartSlice";
 
-const checkout = {
-  _id: "12345",
-  createdAt: new Date(),
-  checkOutItems: [
-    {
-      productId: "1",
-      name: "Jacket",
-      size: "M",
-      color: "BLack",
-      price: 120,
-      quantity: 1,
-      image: "https://picsum.photos/150?random=23",
-    },
-    {
-      productId: "2",
-      name: "T-shirt",
-      size: "L",
-      color: "Yellow",
-      price: 120,
-      quantity: 1,
-      image: "https://picsum.photos/150?random=24",
-    },
-  ],
-  shippingAddress: {
-    address: "123 Fashion Street",
-    city: "New York",
-    counutry: "USA",
-  },
-};
+// const checkout = {
+//   _id: "12345",
+//   createdAt: new Date(),
+//   checkOutItems: [
+//     {
+//       productId: "1",
+//       name: "Jacket",
+//       size: "M",
+//       color: "BLack",
+//       price: 120,
+//       quantity: 1,
+//       image: "https://picsum.photos/150?random=23",
+//     },
+//     {
+//       productId: "2",
+//       name: "T-shirt",
+//       size: "L",
+//       color: "Yellow",
+//       price: 120,
+//       quantity: 1,
+//       image: "https://picsum.photos/150?random=24",
+//     },
+//   ],
+//   shippingAddress: {
+//     address: "123 Fashion Street",
+//     city: "New York",
+//     counutry: "USA",
+//   },
+// };
 
 const OrderConfirmationPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { checkout } = useSelector((state) => state.checkout);
+
+  // Clear the cart When th order is confirmed
+  useEffect(() => {
+    if (checkout && checkout._id) {
+      dispatch(clearCart());
+      localStorage.removeItem("cart");
+    } else {
+      navigate("/my-orders");
+    }
+  }, [checkout, dispatch, navigate]);
+
   const calculateEstimateDelivery = (createdAt) => {
     const orderDate = new Date(createdAt);
     orderDate.setDate(orderDate.getDate() + 10); // add 10 dayss to the order date
